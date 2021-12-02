@@ -1,42 +1,8 @@
-# GraduateProject
+## Keyword Searching on Encrypted Database
 
-2018 졸업프로젝트 구현 내용
-
-정보보호학과 14054027 유지상.
-
-  CRYPT
-
-      1. CTR.JAVA
-
-      AES가 128Bit 임에 따라 16Byte로 나누기 위해 부족한 바이트는 0으로 패딩하였고, 패딩된 0의
-      개수를 표현하기 위하여 헤더를 구현하였습니다. 각 메시지 16Byte에서 앞 2Byte는 0의 개수를 표현
-      하고, 나머지 14Byte는 암호화할 메시지로 구성되게 했습니다. Initial Vector는 총 16Byte에서 앞
-      8Byte는 난수를 생성하여 입력하고, 뒤 8Byte는 00000001부터 블록의 개수만큼 +1 하여 구성되게
-      했습니다.
-
-      2. AES.JAVA
-
-      AES는 현대 암호론 시간에 배운 그대로 구현했습니다. SBOX와 GALOIS, RCON은 구글을 참조하
-      였고. MixColumn에서 Field 안에서의 계산을 위해 255가 넘어갈 시 256을 빼고 0x1b와 XOR했습니
-      다(구글링). 복호화 시 미리 키 계산을 했습니다.
-
-      3. SHA1.JAVA
-
-      문서 FIPS 180-2를 참고하여 구현했습니다. 간단한 블록 처리를 위해 문자열을 2진수 String으로
-      변환 후 처리했습니다.
-
-  Modules
-
-      1. Communi.JAVA
-
-      통신을 위한 Class입니다. 소켓을 개방하면 클라이언트와 서버는 그 소켓을 받아서 메시지를 주고
-      받기 위한 Thread를 생성합니다. 클라이언트와 서버 간 통신에서 명령 구분은 문자열의 앞 글자로 구
-      분하였습니다.
-      
-      2. Fileio.JAVA
-      
-      파일 입출력을 위한 Class입니다. NIO 기반으로 구현하였습니다.
-      
-      3. sqlcon.JAVA
-      
-      데이터베이스 처리를 위한 Class입니다.
+### Module
+- AES-128 CTR Mode
+- SHA1
+- NIO
+- Socket
+- SQL
